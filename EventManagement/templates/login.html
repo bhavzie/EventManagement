@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class = "jumbotron">
+                <h1 class ="display-4" style = "text-align: center;">Account Login</h1><br>
+                <form action = "{{ url_for('login__') }}" method = "POST">
+                        <div class = "form-group">
+                                <input type = "text" name = "email" class = "form-control text-center" required placeholder="Email Address">
+                        </div>
+                        <div class = "form-group">
+                                <input type = "password" name = "password" class = "form-control text-center" required placeholder = "Password">
+                        </div>
+                        <div class = "row">
+                                <div class = "col-sm-12">
+                                        <div class = "text-center">
+                                                <button type = "submit" class = "btn btn-success btn">Sign In &#9755;</button>   
+                                        </div>
+                                </div>
+                        </div>      
+                </form>
+                <br>
+                <form action = "{{ url_for('forgotpassword') }}">
+                        <div class = "row">
+                                <div class = "col-sm-12">
+                                        <div class = "text-center">
+                                                <button type = "submit" class = "btn btn-danger">Forgot Password?</button> 
+                                        </div>
+                                </div>
+                        </div>
+                </form>
+        </div>
+{% endblock %}

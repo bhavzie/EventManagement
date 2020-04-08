@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">FestHive &#169;</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/display_festivals">Festivals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact_us">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/images">Images</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            {% if session.logged_in %}
+            <li><a class="nav-link" href="/logout">Logout</a></li>
+            <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            {% else %}
+            <li><a class="nav-link" href="/register">Register</a></li>
+            <li><a class="nav-link" href="/login">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+</nav>
+  

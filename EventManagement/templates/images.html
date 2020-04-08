@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4" style="text-align: center;">Dashboard :</h1><br>
+<form method="POST" enctype=multipart/form-data action="{{ url_for('add_images') }}" id="add_movie_form">
+        <div class="form-group">
+        <input type="file" name="file" class="form-control" required>
+        <input type=submit value=Upload>
+    </div>
+    </form>
+</div>
+
+<section class="row">
+    {% for image in images %}
+    <section class="col-md-4 col-sm-6">
+        <img src = "{{ url_for('static', filename = 'img/' + image) }}">
+    </section>
+    {% endfor %}
+</section>
+
+
+
+{% endblock %}

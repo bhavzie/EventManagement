@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class="jumbotron">
+                <div class = "ab">
+                        <h1>&#9889; FestHive&#169; &#9889;</h1>
+                        <p>Welcome! FestHive will log all the events taking place in the college.</p>
+                        {% if session.logged_in == NULL %}
+                        <a href="/register" class="btn btn-primary btn-lg"  style="margin-right: 10px;">Register</a>
+                        <a href="/login" class="btn btn-success btn-lg">Login</a>
+                        {% endif %}<br><hr>
+                        <a class = "btn btn-outline-dark btn-lg" href="/about">Learn More</a>
+                </div>
+        </div>
+{% endblock %}

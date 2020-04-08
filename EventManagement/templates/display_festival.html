@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class = "jumbotron">
+        <h1 class ="display-4" style = "text-align: center;">Festival : {{ festival_name }}</h1><br>       
+        <h1 class ="display-6" style = "text-align: center;">Admin : {{ admin_festival }}</h1><br>       
+        {% if events_list %}
+        <div class = "table-responsive">
+                <table class = "table table-dark table-bordered table-hover">
+                        <thead class="thead-dark">
+                                <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col"> Event Name</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <th scope="col">Slots</th>
+                                        <th scope="col">SeatsLeft</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                {% for event in events_list %}
+                                <tr>
+                                        <td> {{ event['No'] }} </td>
+                                        <td> <a href = "/book_show/{{ event['No'] }}">{{ event['event_name'] }} </a></td>
+                                        <td> {{ event['start_date'] }} </td>
+                                        <td> {{ event['end_date'] }} </td>
+                                        <td> {{ event['slots'] }}</td>
+                                        <td> {{ event['seats_left'] }}</td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                </table>
+        </div>
+        {% endif %}
+{% endblock %}

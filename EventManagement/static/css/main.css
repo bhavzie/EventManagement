@@ -1,0 +1,25 @@
+.ab {
+    text-align: center;
+}
+
+
+.form-control {
+    text-align: center;
+}
+
+.jumbotron {
+    background: linear-gradient(to right, #ffecd2  0%, #fcb69f 100%);
+}
+
+select {
+    width : 400px;
+}
+
+th, td {
+    padding : 8px 16px;
+}
+
+thead th {
+    position : sticky ; 
+    top : 0;
+}

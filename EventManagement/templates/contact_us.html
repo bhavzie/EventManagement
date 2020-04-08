@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+        {% from "includes/_formhelpers.html" import render_field %}
+        <div class = "jumbotron">
+        <h1 class ="display-4" style = "text-align: center;">Contact Us &#9993;</h1><br>       
+        <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Non expedita repellat iure delectus pariatur beatae quae reprehenderit neque accusamus temporibus blanditiis libero nobis assumenda, fugiat laudantium nam rem ut magni.
+                <br>
+                <b> Mail us at email@service.com </b>
+        </p>
+        <form method="POST" action="">
+                <div class="form-group">
+                        {{ render_field(form.name, class_="form-control") }}
+                </div>
+                <div class="form-group">
+                        {{ render_field(form.email, class_="form-control") }}
+                </div>
+                <div class="form-group">
+                        {{ render_field(form.body, class_="form-control") }}
+                </div>
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-success btn">Sign In &#9755;</button>   
+                                </div>
+                        </div>
+                </div>
+                <div style = "margin-top: 30px;">
+                </div>
+        </form>
+        </div>
+{% endblock %}

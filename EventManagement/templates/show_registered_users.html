@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class = "jumbotron">
+        <h1 class ="display-5" style = "text-align: center;">Festival Name :- {{ festival_name }}</h1><br>       
+        <h1 class ="display-5" style = "text-align: center;">Event Name :- {{ event_name }}</h1><br>       
+        {% if users_list %}
+        <div class = "table-responsive">
+                <table class = "table table-dark table-bordered table-hover">
+                        <thead class="thead-dark">
+                                <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col"> User_Name</th>
+                                        <th scope="col">Email</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                                {% for user in users_list %}
+                                <tr>
+                                        <td> {{ user['no'] }} </td>
+                                        <td> {{ user['username'] }} </td>
+                                        <td> {{ user['email'] }} </td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                </table>
+        </div>
+        {% endif %}
+{% endblock %}

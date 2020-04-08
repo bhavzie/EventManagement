@@ -1,0 +1,300 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class = "jumbotron">
+        <h1 class ="display-4" style = "text-align: center;">Dashboard :- {{ user }} </h1><br>
+        {% if user=='admin@admin' %}
+        <button class = "btn btn-success" onclick="form_display_function()">Add Festival</button>
+        <button class = "btn btn-success" onclick="form_show_function()">Add Event</button>
+        <button class = "btn btn-success" onclick="form_admin_function()">Add Admin</button>
+        <button class = "btn btn-success" onclick="form_remove_admin_function()">Remove Admin</button>
+        <button class = "btn btn-success" onclick="form_remove_festival()">Remove Festival</button>
+        <br><br>
+        <form method = "POST" action="{{ url_for('add_festival') }}" id="add_movie_form" style="display:none;">
+                <div class = "form-group">
+                        <label>Festival Name</label>
+                        <input type = "text" name = "festival_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>College Name</label>
+                        <input type = "text" name = "college_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Festival Start Date</label>
+                        <input type = "date" name = "festival_start_date" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Festival End Date</label>
+                        <input type = "date" name = "festival_end_date" class = "form-control" required>
+                </div>
+                <input type = "text" name = "user_name" class = "form-control" value = {{ email }} style="display:none">
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-success">Add Festival</button> 
+                                </div>
+                        </div>
+                </div>
+        </form>
+        <form method = "POST" action="{{ url_for('add_event') }}" id="add_show_form" style="display:none;">
+                <div class = "form-group">
+                        <label>Festival Name</label>
+                        <input type = "text" name = "festival_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Event Name</label>
+                        <input type = "text" name = "event_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Event Start Date</label>
+                        <input type = "date" name = "start_date" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Event End Date</label>
+                        <input type = "date" name = "end_date" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Slots</label>
+                        <input type = "number" name = "slots" class = "form-control" required min = "1">
+                </div> 
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-success">Add Event</button> 
+                                </div>
+                        </div>
+                </div>        
+        </form>
+        <form method = "POST" action="{{ url_for('add_admin') }}" id="add_show_form1" style="display:none;">
+                <div class = "form-group">
+                        <label>Email Address:</label><br>
+                        <select name = "Users" required>
+                                {% for i in users %}
+                                        <option value = {{ i }}>{{ i }}</option>
+                                {% endfor %}
+                        </select>
+                </div>
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-success">Add Admin</button> 
+                                </div>
+                        </div>
+                </div>        
+        </form>
+        <form method = "POST" action="{{ url_for('remove_admin') }}" id="add_show_form10" style="display:none;">
+                <div class = "form-group">
+                        <label>Email Address:</label><br>
+                        <select name = "Users2" required>
+                                {% for i in users2 %}
+                                        <option value = {{ i }}>{{ i }}</option>
+                                {% endfor %}
+                        </select>
+                </div>
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-danger">Remove Admin</button> 
+                                </div>
+                        </div>
+                </div>        
+        </form>
+        <form method = "POST" action = "{{ url_for('remove_festival') }}" id = "remove_festival_form" style="display:none">
+                <div class = "form-group">
+                        <label>Festival Name</label><br>
+                        <select name = "festival_name_r" required>
+                                {% for f in festivals %}
+                                        <option value = {{ f }}>{{ f }}</option>
+                                {% endfor %}
+                        </select>
+                </div>
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-danger">Remove Festival</button> 
+                                </div>
+                        </div>
+                </div>        
+        </form>
+        {% endif %}
+        {% if flag  == 1 %}
+        <button class = "btn btn-success" onclick="form_display_function1()">Add Festival</button>
+        <br><br>
+        <form method = "POST" action="{{ url_for('add_festival') }}" id="add_movie_form1" style="display:none;">
+                <div class = "form-group">
+                        <label>Festival Name</label>
+                        <input type = "text" name = "festival_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>College Name</label>
+                        <input type = "text" name = "college_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Festival Start Date</label>
+                        <input type = "date" name = "festival_start_date" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Festival End Date</label>
+                        <input type = "date" name = "festival_end_date" class = "form-control" required>
+                </div>
+                <input type = "text" name = "user_name" class = "form-control" value = {{ email }} style="display:none">
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-success">Add Festival</button> 
+                                </div>
+                        </div>
+                </div>
+        </form>
+        {% endif %}
+        {% if flag == 2%}
+        <button class = "btn btn-success" onclick="form_show_function1()">Add Event</button>
+        <button class = "btn btn-success" onclick="form_show_function123()">Remove Festival</button>
+        <form method = "POST" action="{{ url_for('add_event') }}" id="add_show_form12" style="display:none;">
+                <div class = "form-group">
+                        <label>Festival Name</label>
+                        <input type = "text" name = "festival_name" class = "form-control" value = "{{ festival_name }}" readonly>
+                </div>
+                <div class = "form-group">
+                        <label>Event Name</label>
+                        <input type = "text" name = "event_name" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Event Start Date</label>
+                        <input type = "date" name = "start_date" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Event End Date</label>
+                        <input type = "date" name = "end_date" class = "form-control" required>
+                </div>
+                <div class = "form-group">
+                        <label>Slots</label>
+                        <input type = "number" name = "slots" class = "form-control" required min = "1">
+                </div>
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-success">Add Event</button> 
+                                </div>
+                        </div>
+                </div>        
+        </form>
+        <form method = "POST" action="{{ url_for('remove_festival') }}" id="add_show_form123" style="display:none;">
+                <div class = "form-group">
+                        <label>Festival Name</label>
+                        <input type = "text" name = "festival_name_r" class = "form-control" value = "{{ festival_name }}" readonly>
+                </div>
+                <div class = "row">
+                        <div class = "col-sm-12">
+                                <div class = "text-center">
+                                        <button type = "submit" class = "btn btn-danger">Remove Festival</button> 
+                                </div>
+                        </div>
+                </div>
+        </form>
+        {% endif %}
+        </div>
+<script type="text/javascript">
+        function form_display_function() {
+                var form_var = document.getElementById("add_show_form");
+                var form_var1 = document.getElementById("add_show_form1")
+                var form_var2 = document.getElementById("add_show_form10");
+                form_var.style.display = "none";
+                form_var1.style.display = "none";
+                form_var2.style.display = "none";
+                form_var = document.getElementById("add_movie_form");
+                var ff = document.getElementById("remove_festival_form");
+                ff.style.display = "none";
+                if(form_var.style.display == "none")        
+                        form_var.style.display = "block";
+                else
+                        form_var.style.display = "none";
+        }
+        function form_show_function() {
+                var form_var = document.getElementById("add_movie_form");
+                form_var.style.display = "none";
+                var form_var1 = document.getElementById("add_show_form1");
+                form_var1.style.display = "none";
+                var form_var2 = document.getElementById("add_show_form10");
+                var ff = document.getElementById("remove_festival_form");
+                ff.style.display = "none";
+                form_var = document.getElementById("add_show_form");
+                form_var2.style.display = "none";
+                if(form_var.style.display == "none")        
+                        form_var.style.display = "block";
+                else
+                        form_var.style.display = "none";
+        }
+        function form_admin_function() {
+                var form_var = document.getElementById("add_movie_form");
+                form_var.style.display = "none";
+                var form_var1 = document.getElementById("add_show_form");
+                form_var1.style.display = "none";
+                var form_var2 = document.getElementById("add_show_form10");
+                form_var2.style.display = "none";
+                var ff = document.getElementById("remove_festival_form");
+                ff.style.display = "none";
+                form_var = document.getElementById("add_show_form1");
+                if(form_var.style.display == "none")        
+                        form_var.style.display = "block";
+                else
+                        form_var.style.display = "none";
+        }
+        function form_remove_admin_function() {
+                var form_var = document.getElementById("add_movie_form");
+                form_var.style.display = "none";
+                var form_var1 = document.getElementById("add_show_form");
+                form_var1.style.display = "none";
+                var form_var2 = document.getElementById("add_show_form1");
+                form_var2.style.display = "none";
+                var ff = document.getElementById("remove_festival_form");
+                ff.style.display = "none";
+                form_var = document.getElementById("add_show_form10");
+                if(form_var.style.display == "none")        
+                        form_var.style.display = "block";
+                else
+                        form_var.style.display = "none";
+        }
+        function form_remove_festival() {
+                var form_var = document.getElementById("add_movie_form");
+                form_var.style.display = "none";
+                var form_var1 = document.getElementById("add_show_form");
+                form_var1.style.display = "none";
+                var form_var2 = document.getElementById("add_show_form1");
+                form_var2.style.display = "none";
+                form_var = document.getElementById("add_show_form10");
+                form_var.style.display = "none";
+                var ff = document.getElementById("remove_festival_form");
+                if(ff.style.display == "none")
+                        ff.style.display = "block";
+                else
+                        ff.style.display = "none";
+        }
+        function form_display_function1() {
+                var form_var = document.getElementById("add_movie_form1");
+                if(form_var.style.display == "none")        
+                        form_var.style.display = "block";
+                else
+                        form_var.style.display = "none";
+        }
+        function form_show_function1() {
+                var form_var = document.getElementById("add_show_form12");
+                var form_v = document.getElementById("add_show_form123");
+                form_v.style.display = "none";
+                if(form_var.style.display == "none")        
+                        form_var.style.display = "block";
+                else
+                        form_var.style.display = "none";
+        }
+        function form_show_function123() {
+                var form_var = document.getElementById("add_show_form12");
+                var form_v = document.getElementById("add_show_form123");
+                form_var.style.display = "none";
+                if(form_v.style.display == "none")        
+                        form_v.style.display = "block";
+                else
+                        form_v.style.display = "none";
+        }
+
+</script>
+
+{% endblock %}

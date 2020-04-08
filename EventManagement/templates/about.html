@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+        <div class="jumbotron">
+                <div class = "ab">
+                        <h1>&#9889; FestHive &#9889;</h1>
+                        <br>
+                        <blockquote class = "blockquote text-center">
+                                <p class = "mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, laborum magni? Repellendus obcaecati atque pariatur hic, corrupti numquam, magni quod nemo illum praesentium enim illo debitis omnis quas incidunt? Facere.</p>
+                        </blockquote>
+                        <br>
+                        {% if session.logged_in == NULL %}
+                                <a href="/register" class="btn btn-primary btn-lg" style="margin-right: 10px;">Register</a>
+                                <a href="/login" class="btn btn-success btn-lg">Login</a>
+                        {% endif %}
+                        <br><hr>
+                        <a href="/index" class = "btn btn-outline-dark btn-lg">Home</a><br>
+                        </p><br>
+                </div>
+                
+        </div>
+
+{% endblock %}
